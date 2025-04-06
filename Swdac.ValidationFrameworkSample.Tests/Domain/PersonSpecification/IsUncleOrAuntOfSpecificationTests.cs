@@ -3,7 +3,7 @@ using Xunit;
 using Swdac.ValidationFrameworkSample.Domain;
 using Swdac.ValidationFrameworkSample.Domain.PersonSpecification;
 
-namespace Swdac.ValidationFrameworkSample.Tests.Domain
+namespace Swdac.ValidationFrameworkSample.Tests.Domain.PersonSpecification
 {
     public class IsUncleOrAuntOfSpecificationTests
     {
