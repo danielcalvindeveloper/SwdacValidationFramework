@@ -54,7 +54,8 @@ Here is a simple example of how to use the framework to validate if a person is 
             sc.setParents(eb, fc);
 
             IsSiblingOfSpecification isSiblingSpec = new(dc);
-            Console.WriteLine($"Is {dc} a sibling of {mfc}? {isSiblingSpec.IsSatisfiedBy(mfc) && isSiblingSpec.IsSatisfiedBy(sc) }");
+            Console.WriteLine($"Is {dc} a sibling of {mfc}? " +
+                $"{isSiblingSpec.IsSatisfiedBy(mfc) && isSiblingSpec.IsSatisfiedBy(sc) }");
 
         }
     }

@@ -32,7 +32,8 @@ internal class Program
         sc.setParents(eb, fc);
 
         IsSiblingOfSpecification isSiblingSpec = new(dc);
-        Console.WriteLine($"Is {dc} a sibling of {mfc}? {isSiblingSpec.IsSatisfiedBy(mfc) && isSiblingSpec.IsSatisfiedBy(sc) }");
+        Console.WriteLine($"Is {dc} a sibling of {mfc}? " +
+            $"{isSiblingSpec.IsSatisfiedBy(mfc) && isSiblingSpec.IsSatisfiedBy(sc) }");
 
     }
 }
