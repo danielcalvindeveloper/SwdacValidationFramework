@@ -1,13 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.13.35825.156 d17.13
+VisualStudioVersion = 17.13.35825.156
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Swdac.ValidationFramework", "Swdac.ValidationFramework.csproj", "{1AC966DC-F926-4222-84EC-2A455531D2E7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Swdac.ValidationFramework", "Swdac.ValidationFramework\Swdac.ValidationFramework.csproj", "{A87D9743-14F0-A2DA-CB40-B3112A311ADC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Swdac.ValidationFrameworkSample", "..\Swdac.ValidationFrameworkSample\Swdac.ValidationFrameworkSample.csproj", "{6617C578-B157-4F61-9495-DE2C22DA0F3D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Swdac.ValidationFrameworkSample", "Swdac.ValidationFrameworkSample\Swdac.ValidationFrameworkSample.csproj", "{344A9DBC-9BE6-6243-1EB6-41F09960BAA1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Swdac.ValidationFrameworkSample.Tests", "..\Swdac.ValidationFrameworkSample.Tests\Swdac.ValidationFrameworkSample.Tests.csproj", "{DA25AA43-4922-466C-94AA-8377AEFC19D7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Swdac.ValidationFrameworkSample.Tests", "Swdac.ValidationFrameworkSample.Tests\Swdac.ValidationFrameworkSample.Tests.csproj", "{77DD6610-B55E-2FD4-A373-4B014DFA8573}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,18 +15,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1AC966DC-F926-4222-84EC-2A455531D2E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1AC966DC-F926-4222-84EC-2A455531D2E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1AC966DC-F926-4222-84EC-2A455531D2E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1AC966DC-F926-4222-84EC-2A455531D2E7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6617C578-B157-4F61-9495-DE2C22DA0F3D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6617C578-B157-4F61-9495-DE2C22DA0F3D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6617C578-B157-4F61-9495-DE2C22DA0F3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6617C578-B157-4F61-9495-DE2C22DA0F3D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DA25AA43-4922-466C-94AA-8377AEFC19D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DA25AA43-4922-466C-94AA-8377AEFC19D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DA25AA43-4922-466C-94AA-8377AEFC19D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DA25AA43-4922-466C-94AA-8377AEFC19D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A87D9743-14F0-A2DA-CB40-B3112A311ADC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A87D9743-14F0-A2DA-CB40-B3112A311ADC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A87D9743-14F0-A2DA-CB40-B3112A311ADC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A87D9743-14F0-A2DA-CB40-B3112A311ADC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{344A9DBC-9BE6-6243-1EB6-41F09960BAA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{344A9DBC-9BE6-6243-1EB6-41F09960BAA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{344A9DBC-9BE6-6243-1EB6-41F09960BAA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{344A9DBC-9BE6-6243-1EB6-41F09960BAA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77DD6610-B55E-2FD4-A373-4B014DFA8573}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77DD6610-B55E-2FD4-A373-4B014DFA8573}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77DD6610-B55E-2FD4-A373-4B014DFA8573}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77DD6610-B55E-2FD4-A373-4B014DFA8573}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
