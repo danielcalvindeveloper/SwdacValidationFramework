@@ -57,6 +57,18 @@ Here is a simple example of how to use the framework to validate if a person is 
             Console.WriteLine($"Is {dc} a sibling of {mfc}? " +
                 $"{isSiblingSpec.IsSatisfiedBy(mfc) && isSiblingSpec.IsSatisfiedBy(sc) }");
 
+            // Sample with invalid case
+            Console.WriteLine("\r\nValidating with list of invalid... ");
+            List<string> notSatisfied = new();
+
+            Console.WriteLine($"Is {dc} a sibling of {mfc}? " +
+                $"{isSiblingSpec.IsSatisfiedBy(mfc) && isSiblingSpec.IsSatisfiedBy(fc, notSatisfied)}");
+            Console.WriteLine($"Is {dc} a sibling of {mfc}? " +
+                $"{isSiblingSpec.IsSatisfiedBy(mfc) && isSiblingSpec.IsSatisfiedBy(eb, notSatisfied)}");
+            foreach (var item in notSatisfied)
+            {
+                Console.WriteLine(item);
+            }
         }
     }
 
