@@ -29,7 +29,7 @@ namespace Swdac.ValidationFrameworkSample.Domain.PersonSpecification
                 _sibling.Father != null &&_sibling.Father == candidate.Father;
             if (!isSibling && notSatisfied != null)
             {
-                notSatisfied.Add("Person is not a sibling of the specified person.");
+                notSatisfied.Add($"{_sibling} is not a sibling of the {candidate}.");
             }
             return isSibling;
         }

@@ -29,7 +29,7 @@ namespace Swdac.ValidationFrameworkSample.Domain.PersonSpecification
                  candidate.Father!=null && candidate.Father == _parent;
             if (!isParent && notSatisfied != null)
             {
-                notSatisfied.Add("Person is not a parent of the specified person.");
+                notSatisfied.Add($"{_parent} is not a parent of the {candidate}.");
             }
             return isParent;
         }

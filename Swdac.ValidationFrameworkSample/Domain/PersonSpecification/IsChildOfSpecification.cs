@@ -28,7 +28,7 @@ namespace Swdac.ValidationFrameworkSample.Domain.PersonSpecification
             bool isChild = _parent.Children.Contains(candidate);
             if (!isChild && notSatisfied != null)
             {
-                notSatisfied.Add("Person is not a child of the specified parent.");
+                notSatisfied.Add($"{candidate} is not a child of the {_parent}.");
             }
             return isChild;
         }

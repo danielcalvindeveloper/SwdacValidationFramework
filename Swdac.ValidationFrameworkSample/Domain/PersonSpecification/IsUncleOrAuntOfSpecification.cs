@@ -45,7 +45,7 @@ namespace Swdac.ValidationFrameworkSample.Domain.PersonSpecification
 
             if (notSatisfied != null)
             {
-                notSatisfied.Add("Person is not an uncle or aunt of the specified person.");
+                notSatisfied.Add($"{_uncleOrAunt} is not an uncle or aunt of the {candidate}.");
             }
             return false;
         }

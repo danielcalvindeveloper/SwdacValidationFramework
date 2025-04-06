@@ -21,7 +21,7 @@ namespace Swdac.ValidationFrameworkSample.Domain.PersonSpecification
             bool isAdult = candidate.BirthDate.AddYears(21) <= DateTime.Now;
             if (!isAdult && notSatisfied != null)
             {
-                notSatisfied.Add("Person is not an adult.");
+                notSatisfied.Add($"{candidate} is not an adult.");
             }
             return isAdult;
         }

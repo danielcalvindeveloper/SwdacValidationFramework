@@ -45,7 +45,7 @@ namespace Swdac.ValidationFrameworkSample.Domain.PersonSpecification
 
             if (notSatisfied != null)
             {
-                notSatisfied.Add("Person is not a grandparent of the specified person.");
+                notSatisfied.Add($"{_grandparent} is not a grandparent of the {candidate}.");
             }
             return false;
         }
