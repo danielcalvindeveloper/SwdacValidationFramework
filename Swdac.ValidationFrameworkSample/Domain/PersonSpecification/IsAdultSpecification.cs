@@ -13,7 +13,7 @@ namespace Swdac.ValidationFrameworkSample.Domain.PersonSpecification
 
         public override string SpecSatisfiedBy(Person candidate)
         {
-            return candidate.BirthDate.AddYears(21) <= DateTime.Now ? "Is an adult" : "Is not an adult";
+            return candidate.BirthDate.AddYears(21) <= DateTime.Now ? $"{candidate} is an adult" : $"{candidate} is not an adult";
         }
 
         public override bool IsSatisfiedBy(Person candidate, List<string>? notSatisfied)

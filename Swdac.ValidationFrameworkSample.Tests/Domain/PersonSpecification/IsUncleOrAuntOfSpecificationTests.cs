@@ -72,7 +72,7 @@ namespace Swdac.ValidationFrameworkSample.Tests.Domain.PersonSpecification
             string result = isUncleOrAuntSpec.SpecSatisfiedBy(child);
 
             // Assert
-            Assert.Equal("Is an uncle or aunt of the specified person", result);
+            Assert.Equal("Alice Doe is an uncle or aunt of John Doe", result);
         }
 
         [Fact]
@@ -94,7 +94,7 @@ namespace Swdac.ValidationFrameworkSample.Tests.Domain.PersonSpecification
             string result = isUncleOrAuntSpec.SpecSatisfiedBy(child);
 
             // Assert
-            Assert.Equal("Is not an uncle or aunt of the specified person", result);
+            Assert.Equal("Alice Doe is not an uncle or aunt of Charlie Smith", result);
         }
     }
 }

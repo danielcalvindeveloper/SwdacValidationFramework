@@ -46,7 +46,7 @@ namespace Swdac.ValidationFrameworkSample.Tests.Domain.PersonSpecification
             string result = isAdultSpec.SpecSatisfiedBy(person);
 
             // Assert
-            Assert.Equal("Is an adult", result);
+            Assert.Equal("John Doe is an adult", result);
         }
 
         [Fact]
@@ -60,7 +60,7 @@ namespace Swdac.ValidationFrameworkSample.Tests.Domain.PersonSpecification
             string result = isAdultSpec.SpecSatisfiedBy(person);
 
             // Assert
-            Assert.Equal("Is not an adult", result);
+            Assert.Equal("Jane Doe is not an adult", result);
         }
     }
 }

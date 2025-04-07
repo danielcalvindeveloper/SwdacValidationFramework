@@ -64,7 +64,7 @@ namespace Swdac.ValidationFrameworkSample.Tests.Domain.PersonSpecification
             string result = isGrandparentSpec.SpecSatisfiedBy(child);
 
             // Assert
-            Assert.Equal("Is a grandparent of the specified person", result);
+            Assert.Equal("John Doe is a grandparent of Alice Doe", result);
         }
 
         [Fact]
@@ -84,7 +84,7 @@ namespace Swdac.ValidationFrameworkSample.Tests.Domain.PersonSpecification
             string result = isGrandparentSpec.SpecSatisfiedBy(child);
 
             // Assert
-            Assert.Equal("Is not a grandparent of the specified person", result);
+            Assert.Equal("John Doe is not a grandparent of Alice Doe", result);
         }
     }
 }

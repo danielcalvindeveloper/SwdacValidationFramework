@@ -47,7 +47,7 @@ namespace Swdac.ValidationFrameworkSample.Tests.Domain.PersonSpecification
             string result = isSiblingSpec.SpecSatisfiedBy(sibling2);
 
             // Assert
-            Assert.Equal("Is a sibling of the specified person", result);
+            Assert.Equal("Bob Doe is a sibling of Alice Doe", result);
         }
 
         [Fact]
@@ -67,7 +67,7 @@ namespace Swdac.ValidationFrameworkSample.Tests.Domain.PersonSpecification
             string result = isSiblingSpec.SpecSatisfiedBy(nonSibling);
 
             // Assert
-            Assert.Equal("Is not a sibling of the specified person", result);
+            Assert.Equal("Charlie Smith is not a sibling of Alice Doe", result);
         }
     }
 }

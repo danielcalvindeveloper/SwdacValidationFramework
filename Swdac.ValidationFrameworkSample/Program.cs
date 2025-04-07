@@ -41,18 +41,25 @@ internal class Program
 
         // Sample with invalid case
         Console.WriteLine("\r\nValidating with list of invalid... ");
-        List<string> notSatisfied = new();
+        List<string> notSatisfied = [];
 
-        Console.WriteLine($"Is {dc} a sibling of {mfc}? " +
-            $"{isSiblingSpec.IsSatisfiedBy(mfc) && isSiblingSpec.IsSatisfiedBy(fc, notSatisfied)}");
-        Console.WriteLine($"Is {dc} a sibling of {mfc}? " +
-            $"{isSiblingSpec.IsSatisfiedBy(mfc) && isSiblingSpec.IsSatisfiedBy(eb, notSatisfied)}");
+        Console.WriteLine($"Is {dc} a sibling of {mfc} and {fc}? " +
+            $"{isSiblingSpec.IsSatisfiedBy(mfc, notSatisfied) && isSiblingSpec.IsSatisfiedBy(fc, notSatisfied)}");
+        Console.WriteLine($"Is {dc} a sibling of {mfc} and {eb}? " +
+            $"{isSiblingSpec.IsSatisfiedBy(mfc, notSatisfied) && isSiblingSpec.IsSatisfiedBy(eb, notSatisfied)}");
+
         foreach (var item in notSatisfied)
         {
             Console.WriteLine(item);
         }
 
+        // Sample string description of the specification
+        Console.WriteLine("\r\nValidating return description of... ");
+        Console.WriteLine($"Is {dc} a sibling of {mfc} and {fc}? " +
+           $"{isSiblingSpec.SpecSatisfiedBy(mfc)}, {isSiblingSpec.SpecSatisfiedBy(fc)}");
 
+        Console.WriteLine($"Are {fc} and {eb} parents of {dc}?" +
+            $" {isMotherSpec.And(isFatherSpec).SpecSatisfiedBy(dc)}");
 
     }
 }

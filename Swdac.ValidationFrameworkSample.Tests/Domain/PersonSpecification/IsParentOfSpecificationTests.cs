@@ -58,7 +58,7 @@ namespace Swdac.ValidationFrameworkSample.Tests.Domain.PersonSpecification
             string result = isParentSpec.SpecSatisfiedBy(child);
 
             // Assert
-            Assert.Equal("Is a parent of the specified person", result);
+            Assert.Equal("Jane Doe is parent of Alice Doe", result);
         }
 
         [Fact]
@@ -76,7 +76,7 @@ namespace Swdac.ValidationFrameworkSample.Tests.Domain.PersonSpecification
             string result = isParentSpec.SpecSatisfiedBy(child);
 
             // Assert
-            Assert.Equal("Is not a parent of the specified person", result);
+            Assert.Equal("Jane Doe is not parent of Alice Doe", result);
         }
     }
 }

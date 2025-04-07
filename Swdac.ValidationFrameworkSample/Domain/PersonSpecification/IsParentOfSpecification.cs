@@ -20,7 +20,7 @@ namespace Swdac.ValidationFrameworkSample.Domain.PersonSpecification
 
         public override string SpecSatisfiedBy(Person candidate)
         {
-            return IsSatisfiedBy(candidate) ? "Is a parent of the specified person" : "Is not a parent of the specified person";
+            return IsSatisfiedBy(candidate) ? $"{_parent} is parent of {candidate}" : $"{_parent} is not parent of {candidate}";
         }
 
         public override bool IsSatisfiedBy(Person candidate, List<string>? notSatisfied)
