@@ -21,106 +21,71 @@ To get started with Swdac.ValidationFramework, clone the repository and open the
 Here is a simple example of how to use the framework to validate if a person is an adult and if they are a parent of another person:
 
 ### C#
-    using System;
-    using Xunit;
-    using Swdac.ValidationFrameworkSample.Domain;
-    using Swdac.ValidationFrameworkSample.Domain.PersonSpecification;
+	using Swdac.ValidationFrameworkSample.Domain;
+	using Swdac.ValidationFrameworkSample.Domain.PersonSpecification;
 
-    namespace Swdac.ValidationFrameworkSample.Tests.Domain.PersonSpecification
-    {
-        public class IsUncleOrAuntOfSpecificationTests
-        {
-            [Fact]
-            public void IsSatisfiedBy_ShouldReturnTrue_WhenPersonIsUncleOrAunt()
-            {
-                // Arrange
-                var grandparent1 = new Person(1, "Grandpa", "Doe", new DateTime(1950, 1, 1), GenderEnum.Masculine);
-                var grandparent2 = new Person(2, "Grandma", "Doe", new DateTime(1955, 1, 1), GenderEnum.Feminine);
-                var parent = new Person(3, "Jane", "Doe", new DateTime(1975, 1, 1), GenderEnum.Feminine);
-                var uncle = new Person(4, "John", "Doe", new DateTime(1970, 1, 1), GenderEnum.Masculine);
-                var child = new Person(5, "Alice", "Doe", new DateTime(2000, 1, 1), GenderEnum.Feminine);
+	namespace Swdac.ValidationFramework.Sample;
 
-                parent.setParents(grandparent1, grandparent2);
-                uncle.setParents(grandparent1, grandparent2);
-                child.setParents(parent, new Person(6, "Tom", "Smith", new DateTime(1975, 1, 1), GenderEnum.Masculine));
 
-                var isUncleOrAuntSpec = new IsUncleOrAuntOfSpecification(uncle);
+	internal class Program
+	{
+		static void Main(string[] args)
+		{
+			Console.WriteLine("Hello family!\r\n");
 
-                // Act
-                bool result = isUncleOrAuntSpec.IsSatisfiedBy(child);
+			Console.WriteLine("Creating the family and validating... ");
+			Person fc = new(1, "Fernando", "Calvo", new DateTime(1929, 05, 25), GenderEnum.Masculine);
+			Person eb = new(2, "Elena", "Balvin", new DateTime(1935, 03, 15), GenderEnum.Feminine);
 
-                // Assert
-                Assert.True(result);
-            }
+			Person dc = new(3, "Dario", "Calvo", new DateTime(1960, 07, 20), GenderEnum.Masculine);
+			dc.setParents(eb, fc);
 
-            [Fact]
-            public void IsSatisfiedBy_ShouldReturnFalse_WhenPersonIsNotUncleOrAunt()
-            {
-                // Arrange
-                var grandparent1 = new Person(1, "Grandpa", "Doe", new DateTime(1950, 1, 1), GenderEnum.Masculine);
-                var grandparent2 = new Person(2, "Grandma", "Doe", new DateTime(1955, 1, 1), GenderEnum.Feminine);
-                var parent = new Person(3, "Jane", "Doe", new DateTime(1975, 1, 1), GenderEnum.Feminine);
-                var nonUncle = new Person(4, "Charlie", "Smith", new DateTime(1970, 1, 1), GenderEnum.Masculine);
-                var child = new Person(5, "Alice", "Doe", new DateTime(2000, 1, 1), GenderEnum.Feminine);
+			IsParentOfSpecification isParentSpec = new(dc);
+			Console.WriteLine($"Is {dc} a parent of {fc}? {isParentSpec.IsSatisfiedBy(eb)}");
+			Console.WriteLine($"Is {dc} a parent of {eb}? {isParentSpec.IsSatisfiedBy(eb)}");
 
-                parent.setParents(grandparent1, grandparent2);
-                child.setParents(parent, new Person(6, "Tom", "Smith", new DateTime(1975, 1, 1), GenderEnum.Masculine));
+			IsParentOfSpecification isFatherSpec = new(fc);
+			IsParentOfSpecification isMotherSpec = new(eb);
+			Console.WriteLine($"Are {fc} and {eb} parents of {dc}?" +
+				$" {isMotherSpec.And(isFatherSpec).IsSatisfiedBy(dc)}");
 
-                var isUncleOrAuntSpec = new IsUncleOrAuntOfSpecification(nonUncle);
+			Person mfc = new(4, "Maria", "Calvo", new DateTime(1990, 01, 01), GenderEnum.Feminine);
+			Person sc = new(5, "Silvia", "Calvo", new DateTime(1990, 01, 01), GenderEnum.Feminine);
 
-                // Act
-                bool result = isUncleOrAuntSpec.IsSatisfiedBy(child);
+			mfc.setParents(eb, fc);
+			sc.setParents(eb, fc);
 
-                // Assert
-                Assert.False(result);
-            }
+			IsSiblingOfSpecification isSiblingSpec = new(dc);
+			Console.WriteLine($"Is {dc} a sibling of {mfc}? " +
+				$"{isSiblingSpec.IsSatisfiedBy(mfc) && isSiblingSpec.IsSatisfiedBy(sc)}");
 
-            [Fact]
-            public void SpecSatisfiedBy_ShouldReturnCorrectMessage_WhenPersonIsUncleOrAunt()
-            {
-                // Arrange
-                var grandparent1 = new Person(1, "Grandpa", "Doe", new DateTime(1950, 1, 1), GenderEnum.Masculine);
-                var grandparent2 = new Person(2, "Grandma", "Doe", new DateTime(1955, 1, 1), GenderEnum.Feminine);
-                var parent = new Person(3, "Jane", "Doe", new DateTime(1975, 1, 1), GenderEnum.Feminine);
-                var uncle = new Person(4, "John", "Doe", new DateTime(1970, 1, 1), GenderEnum.Masculine);
-                var child = new Person(5, "Alice", "Doe", new DateTime(2000, 1, 1), GenderEnum.Feminine);
+			Console.WriteLine($"Is {dc} a sibling of {mfc}? " +
+				$"{isSiblingSpec.IsSatisfiedBy(mfc) && isSiblingSpec.IsSatisfiedBy(fc)}");
 
-                parent.setParents(grandparent1, grandparent2);
-                uncle.setParents(grandparent1, grandparent2);
-                child.setParents(parent, new Person(6, "Tom", "Smith", new DateTime(1975, 1, 1), GenderEnum.Masculine));
+			// Sample with invalid case
+			Console.WriteLine("\r\nValidating with list of invalid... ");
+			List<string> notSatisfied = [];
 
-                var isUncleOrAuntSpec = new IsUncleOrAuntOfSpecification(uncle);
+			Console.WriteLine($"Is {dc} a sibling of {mfc} and {fc}? " +
+				$"{isSiblingSpec.IsSatisfiedBy(mfc, notSatisfied) && isSiblingSpec.IsSatisfiedBy(fc, notSatisfied)}");
+			Console.WriteLine($"Is {dc} a sibling of {mfc} and {eb}? " +
+				$"{isSiblingSpec.IsSatisfiedBy(mfc, notSatisfied) && isSiblingSpec.IsSatisfiedBy(eb, notSatisfied)}");
 
-                // Act
-                string result = isUncleOrAuntSpec.SpecSatisfiedBy(child);
+			foreach (var item in notSatisfied)
+			{
+				Console.WriteLine(item);
+			}
 
-                // Assert
-                Assert.Equal("Alice Doe is an uncle or aunt of John Doe", result);
-            }
+			// Sample string description of the specification
+			Console.WriteLine("\r\nValidating return description of... ");
+			Console.WriteLine($"Is {dc} a sibling of {mfc} and {fc}? " +
+			   $"{isSiblingSpec.SpecSatisfiedBy(mfc)}, {isSiblingSpec.SpecSatisfiedBy(fc)}");
 
-            [Fact]
-            public void SpecSatisfiedBy_ShouldReturnCorrectMessage_WhenPersonIsNotUncleOrAunt()
-            {
-                // Arrange
-                var grandparent1 = new Person(1, "Grandpa", "Doe", new DateTime(1950, 1, 1), GenderEnum.Masculine);
-                var grandparent2 = new Person(2, "Grandma", "Doe", new DateTime(1955, 1, 1), GenderEnum.Feminine);
-                var parent = new Person(3, "Jane", "Doe", new DateTime(1975, 1, 1), GenderEnum.Feminine);
-                var nonUncle = new Person(4, "Charlie", "Smith", new DateTime(1970, 1, 1), GenderEnum.Masculine);
-                var child = new Person(5, "Alice", "Doe", new DateTime(2000, 1, 1), GenderEnum.Feminine);
+			Console.WriteLine($"Are {fc} and {eb} parents of {dc}?" +
+				$" {isMotherSpec.And(isFatherSpec).SpecSatisfiedBy(dc)}");
 
-                parent.setParents(grandparent1, grandparent2);
-                child.setParents(parent, new Person(6, "Tom", "Smith", new DateTime(1975, 1, 1), GenderEnum.Masculine));
-
-                var isUncleOrAuntSpec = new IsUncleOrAuntOfSpecification(nonUncle);
-
-                // Act
-                string result = isUncleOrAuntSpec.SpecSatisfiedBy(child);
-
-                // Assert
-                Assert.Equal("Alice Doe is not an uncle or aunt of Charlie Smith", result);
-            }
-        }
-    }
+		}
+	}
 
 ## Console Output
 Here is the console output generated by the example:
